@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e3c72">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JD's Shootout">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkpEJ3MgQmlsbGlhcmQgU2hvb3RvdXQiLAogICJzaG9ydF9uYW1lIjogIkpEJ3MgU2hvb3RvdXQiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzFlM2M3MiIsCiAgInRoZW1lX2NvbG9yIjogIiMxZTNjNzIiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSXhPVElpSUdobGFXZG9kRDBpTVRreUlqNDhjbVZqZENCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlnWm1sc2JEMGlJekZsTTJNM01pSXZQanh5WldOMElIZzlJalEzSWlCNVBTSTBOeUlnZDJsa2RHZzlJamszSWlCb1pXbG5hSFE5SWprNUlpQnllRDBpTVRBaUlHWnBiR3c5SWlNek5EazRaR0lpTHo0OGRHVjRkQ0I0UFNJMk5DSWdlVDBpT1RJaUlHWnBiR3c5SWlNbVptWm1abVptWmlJZ1ptOXVkQzF6YVhwbFBTSTVNaUlnWm05dWRDMW1ZVzFwYkhrOUlpZGhjbWxoYkNjK01Ud3ZkR1Y0ZEQ0OGRHVjRkQ0I0UFNJMk5DSWdlVDBpTVRFd0lpQm1hV3hzUFNJalptWm1abVptWmlJZ1ptOXVkQzF6YVhwbFBTSTJNQ0lnWm05dWRDMW1ZVzFwYkhrOUlpZGhjbWxoYkNjK09Dd3ZkR1Y0ZEQ0OEwzTjJaejQ9IiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSXhPVElpSUdobGFXZG9kRDBpTVRreUlqNDhjbVZqZENCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlnWm1sc2JEMGlJekZsTTJNM01pSXZQanh5WldOMElIZzlJalEzSWlCNVBTSTBOeUlnZDJsa2RHZzlJamszSWlCb1pXbG5hSFE5SWprNUlpQnllRDBpTVRBaUlHWnBiR3c5SWlNek5EazRaR0lpTHo0OGRHVjRkQ0I0UFNJMk5DSWdlVDBpT1RJaUlHWnBiR3c5SWlNbVptWm1abVptWmlJZ1ptOXVkQzF6YVhwbFBTSTVNaUlnWm05dWRDMW1ZVzFwYkhrOUlpZGhjbWxoYkNjK01Ud3ZkR1Y0ZEQ0OGRHVjRkQ0I0UFNJMk5DSWdlVDBpTVRFd0lpQm1hV3hzUFNJalptWm1abVptWmlJZ1ptOXVkQzF6YVhwbFBTSTJNQ0lnWm05dWRDMW1ZVzFwYkhrOUlpZGhjbWxoYkNjK09Dd3ZkR1Y0ZEQ0OEwzTjJaejQ9IiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfQogIF0KfQ==">
+    <title>JD's Billiard Shootout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        /* Player Selection */
+        .player-select {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 8px 0;
+        }
+
+        .player-btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 1em;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .player-btn.active {
+            border-color: #f39c12;
+            background: rgba(243, 156, 18, 0.3);
+        }
+
+        .player-btn.player1 {
+            border-color: #3498db;
+        }
+
+        .player-btn.player1.active {
+            background: rgba(52, 152, 219, 0.3);
+            border-color: #3498db;
+        }
+
+        .player-btn.player2 {
+            border-color: #e74c3c;
+        }
+
+        .player-btn.player2.active {
+            background: rgba(231, 76, 60, 0.3);
+            border-color: #e74c3c;
+        }
+
+        /* Match Results */
+        .match-results {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 8px;
+            margin: 8px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .player-result {
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .player-result.player1 {
+            background: rgba(52, 152, 219, 0.2);
+            border: 2px solid #3498db;
+        }
+
+        .player-result.player2 {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+        }
+
+        .player-result.winner {
+            border-width: 3px;
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+
+        .player-result-name {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .player-result-time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #f39c12;
+            font-family: 'Courier New', monospace;
+        }
+
+        .match-winner {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f39c12;
+            margin-top: 5px;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 8px;
+            font-size: 0.9em;
+            border: 2px solid #95a5a6;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .mode-btn.active {
+            background: rgba(243, 156, 18, 0.3);
+            border-color: #f39c12;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .install-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 100;
+            transition: all 0.2s ease;
+        }
+
+        .install-btn:active {
+            transform: scale(0.95);
+            background: rgba(39, 174, 96, 0.9);
+        }
+
+        .install-btn.show {
+            display: block;
+        }
+
+        .timer-display {
+            font-size: 3em;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 0.95em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .btn-start {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-stop {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-reset {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.3);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.7em;
+            color: #bdc3c7;
+            margin-bottom: 3px;
+        }
+
+        .stat-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .adjustments {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .adjustment-group {
+            background: rgba(0,0,0,0.2);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .adjustment-group h3 {
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            color: #f39c12;
+            text-align: center;
+        }
+
+        .adjustment-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .btn-penalty {
+            background: #e74c3c;
+            color: white;
+            padding: 8px;
+            font-size: 0.85em;
+        }
+
+        .btn-bonus {
+            background: #27ae60;
+            color: white;
+            padding: 8px;
+            font-size: 0.85em;
+        }
+
+        .events-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            flex-shrink: 0;
+        }
+
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .events-section h2 {
+            margin: 0;
+            font-size: 1em;
+            color: #f39c12;
+        }
+
+        .clear-events {
+            background: #95a5a6;
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8em;
+        }
+
+        .events-log {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 8px;
+            height: 120px;
+            overflow-y: auto;
+        }
+
+        .event-item {
+            padding: 6px 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .event-penalty {
+            background: rgba(231, 76, 60, 0.3);
+            border-left: 3px solid #e74c3c;
+        }
+
+        .event-bonus {
+            background: rgba(39, 174, 96, 0.3);
+            border-left: 3px solid #27ae60;
+        }
+
+        .event-control {
+            background: rgba(52, 152, 219, 0.3);
+            border-left: 3px solid #3498db;
+        }
+
+        .event-time {
+            font-family: 'Courier New', monospace;
+            color: #bdc3c7;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .event-text {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 8px;
+        }
+
+        /* Custom scrollbar for events log */
+        .events-log::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .events-log::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+            border-radius: 3px;
+        }
+
+        .events-log::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .timer-display {
+                font-size: 2.5em;
+            }
+            
+            .stat-value {
+                font-size: 1em;
+            }
+        }
+
+        /* Rules Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            margin: 5% auto;
+            padding: 20px;
+            border: 2px solid #f39c12;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #f39c12;
+        }
+
+        .close-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .rules-content h3 {
+            color: #f39c12;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .rules-content p, .rules-content ul {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .rules-content ul {
+            padding-left: 20px;
+        }
+
+        .rules-content li {
+            margin-bottom: 8px;
+        }
+
+        .rules-content strong {
+            color: #f39c12;
+        }
+
+        .facebook-link {
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
+        .facebook-link a {
+            color: #3b5998;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .facebook-link a:hover {
+            background: rgba(255,255,255,1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .facebook-link a:active {
+            transform: translateY(0);
+        }
+
+        /* Camera Preview */
+        .camera-container {
+            position: fixed;
+            bottom: 180px;
+            right: 10px;
+            width: 120px;
+            height: 160px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 3px solid #f39c12;
+            background: #000;
+            z-index: 200;
+            display: none;
+        }
+
+        .camera-container.active {
+            display: block;
+        }
+
+        .camera-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .camera-controls {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .camera-control-btn {
+            background: rgba(0,0,0,0.7);
+            border: none;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .camera-control-btn:active {
+            transform: scale(0.9);
+        }
+
+        .camera-toggle-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(243, 156, 18, 0.9);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 150;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .camera-toggle-btn:active {
+            transform: scale(0.95);
+        }
+
+        .camera-toggle-btn.active {
+            background: rgba(231, 76, 60, 0.9);
+        }
+
+        .camera-position-options {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            background: rgba(0,0,0,0.9);
+            border-radius: 8px;
+            padding: 8px;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 199;
+        }
+
+        .camera-position-options.show {
+            display: flex;
+        }
+
+        .position-btn {
+            background: rgba(243, 156, 18, 0.8);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .position-btn:active {
+            background: rgba(243, 156, 18, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="install-btn" id="installBtn">📱 Add to Home</button>
+        <h1>🎱 JD's Billiard Shootout</h1>
+        
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" id="soloModeBtn">Solo Mode</button>
+            <button class="mode-btn" id="vsModeBtn">VS Mode</button>
+        </div>
+
+        <!-- Player Selection (VS Mode only) -->
+        <div class="player-select" id="playerSelect" style="display: none;">
+            <button class="player-btn player1 active" id="player1Btn">Player 1</button>
+            <button class="player-btn player2" id="player2Btn">Player 2</button>
+        </div>
+
+        <!-- Match Results (VS Mode only) -->
+        <div class="match-results" id="matchResults" style="display: none;">
+            <div class="player-result player1" id="p1Result">
+                <div class="player-result-name">Player 1</div>
+                <div class="player-result-time" id="p1Time">--:--</div>
+            </div>
+            <div class="player-result player2" id="p2Result">
+                <div class="player-result-name">Player 2</div>
+                <div class="player-result-time" id="p2Time">--:--</div>
+            </div>
+        </div>
+        <div class="match-winner" id="matchWinner" style="display: none;"></div>
+        
+        <div class="timer-display" id="timerDisplay">00:00.00</div>
+        
+        <div class="timer-controls">
+            <button class="btn-start" id="startBtn">Start</button>
+            <button class="btn-stop" id="stopBtn">Stop</button>
+            <button class="btn-reset" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Raw Time</div>
+                <div class="stat-value" id="rawTime">00:00.00</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Adjust</div>
+                <div class="stat-value" id="adjustments">+0.0s</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Final</div>
+                <div class="stat-value" id="finalTime">00:00.00</div>
+            </div>
+        </div>
+
+        <div class="adjustments">
+            <div class="adjustment-group">
+                <h3>⚠️ Penalties</h3>
+                <div class="adjustment-buttons">
+                    <button class="btn-penalty" data-time="2" data-event="Missed Shot">Miss (+2s)</button>
+                    <button class="btn-penalty" data-time="5" data-event="Break Scratch">Break Scratch (+5s)</button>
+                    <button class="btn-penalty" data-time="0" data-event="Scratch - Attempt Ended" data-end="true">Scratch (End)</button>
+                </div>
+            </div>
+
+            <div class="adjustment-group">
+                <h3>⭐ Bonuses</h3>
+                <div class="adjustment-buttons">
+                    <button class="btn-bonus" data-time="-2" data-event="Bank Shot">Bank (-2s ea.)</button>
+                    <button class="btn-bonus" data-time="-1.5" data-event="Combination Shot">Combo (-1.5s)</button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 10px 0;">
+            <button class="btn-reset" id="rulesBtn" style="padding: 8px 20px; font-size: 0.9em;">📖 Rules</button>
+        </div>
+
+        <div class="events-section">
+            <div class="events-header">
+                <h2>📋 Events</h2>
+                <button class="clear-events" id="clearEventsBtn">Clear</button>
+            </div>
+            <div class="events-log" id="eventsLog">
+                <div class="event-item event-control">
+                    <span class="event-text">Waiting to start...</span>
+                    <span class="event-time">--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="facebook-link">
+            <a href="https://www.facebook.com/groups/1997200904347738/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener noreferrer">
+                📘 Join JD's Shootout Group on Facebook
+            </a>
+        </div>
+    </div>
+
+    <!-- Camera Preview -->
+    <div class="camera-container" id="cameraContainer">
+        <video id="cameraVideo" autoplay playsinline muted></video>
+        <div class="camera-controls">
+            <button class="camera-control-btn" id="flipCameraBtn" title="Flip Camera">🔄</button>
+            <button class="camera-control-btn" id="closeCameraBtn" title="Close Camera">✕</button>
+        </div>
+    </div>
+
+    <!-- Camera Toggle Button -->
+    <button class="camera-toggle-btn" id="cameraToggleBtn" title="Toggle Camera">📹</button>
+
+    <!-- Camera Position Options -->
+    <div class="camera-position-options" id="cameraPositionOptions">
+        <button class="position-btn" data-position="top-left">Top Left</button>
+        <button class="position-btn" data-position="top-right">Top Right</button>
+        <button class="position-btn" data-position="bottom-left">Bottom Left</button>
+        <button class="position-btn" data-position="bottom-right">Bottom Right</button>
+    </div>
+
+    <!-- Rules Modal -->
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 JD's Billiard Shootout Rules</h2>
+                <button class="close-btn" id="closeModal">Close</button>
+            </div>
+            <div class="rules-content">
+                <h3>🎯 Objective</h3>
+                <p>Pocket all 8 balls (excluding the cue ball) in any order and into any pocket in the fastest time possible.</p>
+
+                <h3>🎱 Setup</h3>
+                <ul>
+                    <li>Standard 9-ball rack (or 8-ball rack with one ball removed)</li>
+                    <li>Break from behind the head string</li>
+                </ul>
+
+                <h3>⏱️ Gameplay</h3>
+                <p><strong>Breaking:</strong></p>
+                <ul>
+                    <li>Timer starts when the cue ball is struck on the break</li>
+                    <li>If the cue ball is scratched on the break, player receives a <strong>+5 second penalty</strong> and must place the cue ball within a corner pocket (player's choice) for the next shot</li>
+                </ul>
+
+                <p><strong>Shooting:</strong></p>
+                <ul>
+                    <li>Pocket all 8 object balls in any order into any pockets</li>
+                    <li>No need to call shots</li>
+                    <li>Continue shooting until all balls are pocketed or a scratch occurs</li>
+                    <li>Timer stops when the final ball is legally pocketed</li>
+                </ul>
+
+                <h3>⚠️ Penalties (added to final time)</h3>
+                <ul>
+                    <li><strong>Missed shot:</strong> +2 seconds</li>
+                    <li><strong>Break scratch:</strong> +5 seconds, cue ball placed in corner pocket for next shot</li>
+                    <li><strong>Scratched cue ball (during play):</strong> Attempt ends immediately</li>
+                </ul>
+
+                <h3>⭐ Bonuses (subtracted from final time)</h3>
+                <ul>
+                    <li><strong>Bank shot:</strong> -2 seconds per bank (ball contacts at least one rail before pocketing) - Press the button once for each bank in the shot</li>
+                    <li><strong>Combination shot:</strong> -1.5 seconds (cue ball strikes one object ball which pockets another)</li>
+                    <li><strong>Perfect round:</strong> -5 seconds (complete the round with no missed shots - automatically applied when stopping timer)</li>
+                </ul>
+
+                <h3>🏆 Scoring</h3>
+                <p><strong>Final time = Raw time + Penalties - Bonuses</strong></p>
+                <p>Lowest time wins!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval = null;
+        let isRunning = false;
+        let totalAdjustments = 0;
+        let events = [];
+        
+        // VS Mode variables
+        let vsMode = false;
+        let currentPlayer = 1;
+        let player1Result = null;
+        let player2Result = null;
+
+        const timerDisplay = document.getElementById('timerDisplay');
+        const rawTimeDisplay = document.getElementById('rawTime');
+        const adjustmentsDisplay = document.getElementById('adjustments');
+        const finalTimeDisplay = document.getElementById('finalTime');
+        const eventsLog = document.getElementById('eventsLog');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const clearEventsBtn = document.getElementById('clearEventsBtn');
+        const rulesBtn = document.getElementById('rulesBtn');
+        const rulesModal = document.getElementById('rulesModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        // VS Mode elements
+        const soloModeBtn = document.getElementById('soloModeBtn');
+        const vsModeBtn = document.getElementById('vsModeBtn');
+        const playerSelect = document.getElementById('playerSelect');
+        const player1Btn = document.getElementById('player1Btn');
+        const player2Btn = document.getElementById('player2Btn');
+        const matchResults = document.getElementById('matchResults');
+        const matchWinner = document.getElementById('matchWinner');
+        const p1Result = document.getElementById('p1Result');
+        const p2Result = document.getElementById('p2Result');
+        const p1Time = document.getElementById('p1Time');
+        const p2Time = document.getElementById('p2Time');
+
+        // Camera elements
+        const cameraContainer = document.getElementById('cameraContainer');
+        const cameraVideo = document.getElementById('cameraVideo');
+        const cameraToggleBtn = document.getElementById('cameraToggleBtn');
+        const closeCameraBtn = document.getElementById('closeCameraBtn');
+        const flipCameraBtn = document.getElementById('flipCameraBtn');
+        const cameraPositionOptions = document.getElementById('cameraPositionOptions');
+        
+        let cameraStream = null;
+        let facingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+        let cameraActive = false;
+        let positionMenuTimeout = null;
+
+        // PWA Install functionality
+        const installBtn = document.getElementById('installBtn');
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Save the event so it can be triggered later
+            deferredPrompt = e;
+            // Show the install button
+            installBtn.classList.add('show');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                // Clear the deferredPrompt
+                deferredPrompt = null;
+                // Hide the install button
+                installBtn.classList.remove('show');
+            } else {
+                // For iOS devices - show instructions
+                if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+                    alert('To add to home screen:\n1. Tap the Share button (square with arrow)\n2. Scroll down and tap "Add to Home Screen"');
+                }
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            // Hide the install button
+            installBtn.classList.remove('show');
+            deferredPrompt = null;
+        });
+
+        // Show install button for iOS devices
+        if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+            // Check if already installed
+            if (!window.navigator.standalone) {
+                installBtn.classList.add('show');
+            }
+        }
+
+
+        function formatTime(milliseconds) {
+            const totalSeconds = Math.floor(milliseconds / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            const ms = Math.floor((milliseconds % 1000) / 10);
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(ms).padStart(2, '0')}`;
+        }
+
+        function updateDisplay() {
+            const currentTime = isRunning ? Date.now() - startTime + elapsedTime : elapsedTime;
+            const finalTime = currentTime + (totalAdjustments * 1000);
+            
+            timerDisplay.textContent = formatTime(finalTime);
+            rawTimeDisplay.textContent = formatTime(currentTime);
+            
+            const adjustSign = totalAdjustments >= 0 ? '+' : '';
+            adjustmentsDisplay.textContent = `${adjustSign}${totalAdjustments.toFixed(1)}s`;
+            
+            finalTimeDisplay.textContent = formatTime(finalTime);
+        }
+
+        function addEvent(eventText, timeAdjustment, isControl = false) {
+            const currentTime = isRunning ? Date.now() - startTime + elapsedTime : elapsedTime;
+            const timestamp = formatTime(currentTime);
+            
+            events.unshift({
+                text: eventText,
+                time: timestamp,
+                adjustment: timeAdjustment,
+                isControl: isControl
+            });
+
+            // Store in localStorage
+            localStorage.setItem('billiardShootoutEvents', JSON.stringify(events));
+            
+            renderEvents();
+        }
+
+        function renderEvents() {
+            eventsLog.innerHTML = '';
+            events.forEach(event => {
+                const eventItem = document.createElement('div');
+                eventItem.className = 'event-item';
+                
+                if (event.isControl) {
+                    eventItem.classList.add('event-control');
+                } else if (event.adjustment < 0) {
+                    eventItem.classList.add('event-bonus');
+                } else if (event.adjustment > 0) {
+                    eventItem.classList.add('event-penalty');
+                } else {
+                    eventItem.classList.add('event-control');
+                }
+                
+                eventItem.innerHTML = `
+                    <span class="event-text">${event.text}</span>
+                    <span class="event-time">${event.time}</span>
+                `;
+                eventsLog.appendChild(eventItem);
+            });
+
+            if (events.length === 0) {
+                eventsLog.innerHTML = '<div class="event-item event-control"><span class="event-text">No events yet</span><span class="event-time">--:--</span></div>';
+            }
+        }
+
+        startBtn.addEventListener('click', () => {
+            if (!isRunning) {
+                startTime = Date.now();
+                isRunning = true;
+                timerInterval = setInterval(updateDisplay, 10);
+                startBtn.textContent = 'Resume';
+                addEvent('Timer Started', 0, true);
+            }
+        });
+
+        stopBtn.addEventListener('click', () => {
+            if (isRunning) {
+                isRunning = false;
+                elapsedTime += Date.now() - startTime;
+                clearInterval(timerInterval);
+                addEvent('Timer Stopped', 0, true);
+                
+                // Check if there were any missed shots in the events
+                const hasMissedShot = events.some(event => event.text === 'Missed Shot');
+                
+                if (!hasMissedShot) {
+                    // Automatically apply perfect round bonus
+                    totalAdjustments += -5;
+                    addEvent('Perfect Round - No Misses', -5);
+                }
+                
+                // In VS mode, save the current player's result
+                if (vsMode) {
+                    const finalTime = elapsedTime + (totalAdjustments * 1000);
+                    if (currentPlayer === 1) {
+                        player1Result = finalTime;
+                        p1Time.textContent = formatTime(finalTime);
+                        addEvent('Player 1 finished', 0, true);
+                    } else {
+                        player2Result = finalTime;
+                        p2Time.textContent = formatTime(finalTime);
+                        addEvent('Player 2 finished', 0, true);
+                    }
+                    
+                    // Check if both players have finished
+                    if (player1Result !== null && player2Result !== null) {
+                        determineWinner();
+                    }
+                }
+                
+                // Save state
+                localStorage.setItem('billiardShootoutState', JSON.stringify({
+                    elapsedTime,
+                    totalAdjustments,
+                    isRunning: false,
+                    vsMode,
+                    currentPlayer,
+                    player1Result,
+                    player2Result
+                }));
+                
+                updateDisplay();
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            isRunning = false;
+            clearInterval(timerInterval);
+            startTime = 0;
+            elapsedTime = 0;
+            totalAdjustments = 0;
+            events = [];
+            
+            // Reset VS mode results if in VS mode
+            if (vsMode) {
+                player1Result = null;
+                player2Result = null;
+                p1Time.textContent = '--:--';
+                p2Time.textContent = '--:--';
+                p1Result.classList.remove('winner');
+                p2Result.classList.remove('winner');
+                matchWinner.style.display = 'none';
+                matchWinner.textContent = '';
+            }
+            
+            localStorage.removeItem('billiardShootoutEvents');
+            localStorage.removeItem('billiardShootoutState');
+            startBtn.textContent = 'Start';
+            updateDisplay();
+            addEvent('Timer Reset', 0, true);
+        });
+
+        clearEventsBtn.addEventListener('click', () => {
+            events = [];
+            localStorage.removeItem('billiardShootoutEvents');
+            renderEvents();
+        });
+
+        // Rules modal handlers
+        rulesBtn.addEventListener('click', () => {
+            rulesModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', () => {
+            rulesModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === rulesModal) {
+                rulesModal.style.display = 'none';
+            }
+        });
+
+        // VS Mode handlers
+        soloModeBtn.addEventListener('click', () => {
+            vsMode = false;
+            soloModeBtn.classList.add('active');
+            vsModeBtn.classList.remove('active');
+            playerSelect.style.display = 'none';
+            matchResults.style.display = 'none';
+            matchWinner.style.display = 'none';
+            resetTimer();
+        });
+
+        vsModeBtn.addEventListener('click', () => {
+            vsMode = true;
+            vsModeBtn.classList.add('active');
+            soloModeBtn.classList.remove('active');
+            playerSelect.style.display = 'flex';
+            matchResults.style.display = 'grid';
+            resetTimer();
+        });
+
+        player1Btn.addEventListener('click', () => {
+            if (!isRunning) {
+                currentPlayer = 1;
+                player1Btn.classList.add('active');
+                player2Btn.classList.remove('active');
+                resetTimer();
+            }
+        });
+
+        player2Btn.addEventListener('click', () => {
+            if (!isRunning) {
+                currentPlayer = 2;
+                player2Btn.classList.add('active');
+                player1Btn.classList.remove('active');
+                resetTimer();
+            }
+        });
+
+        function determineWinner() {
+            if (player1Result < player2Result) {
+                p1Result.classList.add('winner');
+                p2Result.classList.remove('winner');
+                matchWinner.textContent = '🏆 Player 1 Wins!';
+            } else if (player2Result < player1Result) {
+                p2Result.classList.add('winner');
+                p1Result.classList.remove('winner');
+                matchWinner.textContent = '🏆 Player 2 Wins!';
+            } else {
+                p1Result.classList.add('winner');
+                p2Result.classList.add('winner');
+                matchWinner.textContent = '🏆 It\'s a Tie!';
+            }
+            matchWinner.style.display = 'block';
+        }
+
+        function resetTimer() {
+            isRunning = false;
+            clearInterval(timerInterval);
+            startTime = 0;
+            elapsedTime = 0;
+            totalAdjustments = 0;
+            events = [];
+            startBtn.textContent = 'Start';
+            updateDisplay();
+            renderEvents();
+        }
+
+        // Penalty and bonus buttons
+        document.querySelectorAll('.btn-penalty, .btn-bonus').forEach(button => {
+            button.addEventListener('click', () => {
+                const timeChange = parseFloat(button.dataset.time);
+                const eventText = button.dataset.event;
+                const shouldEnd = button.dataset.end === 'true';
+                
+                totalAdjustments += timeChange;
+                addEvent(eventText, timeChange);
+                
+                if (shouldEnd && isRunning) {
+                    isRunning = false;
+                    elapsedTime += Date.now() - startTime;
+                    clearInterval(timerInterval);
+                    addEvent('Attempt Ended', 0, true);
+                }
+                
+                updateDisplay();
+                
+                // Save state
+                localStorage.setItem('billiardShootoutState', JSON.stringify({
+                    elapsedTime,
+                    totalAdjustments,
+                    isRunning: false
+                }));
+            });
+        });
+
+        // Load saved state on page load
+        window.addEventListener('load', () => {
+            const savedState = localStorage.getItem('billiardShootoutState');
+            const savedEvents = localStorage.getItem('billiardShootoutEvents');
+            
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                elapsedTime = state.elapsedTime || 0;
+                totalAdjustments = state.totalAdjustments || 0;
+                vsMode = state.vsMode || false;
+                currentPlayer = state.currentPlayer || 1;
+                player1Result = state.player1Result || null;
+                player2Result = state.player2Result || null;
+                
+                // Restore VS mode UI
+                if (vsMode) {
+                    vsModeBtn.classList.add('active');
+                    soloModeBtn.classList.remove('active');
+                    playerSelect.style.display = 'flex';
+                    matchResults.style.display = 'grid';
+                    
+                    if (currentPlayer === 1) {
+                        player1Btn.classList.add('active');
+                        player2Btn.classList.remove('active');
+                    } else {
+                        player2Btn.classList.add('active');
+                        player1Btn.classList.remove('active');
+                    }
+                    
+                    if (player1Result !== null) {
+                        p1Time.textContent = formatTime(player1Result);
+                    }
+                    if (player2Result !== null) {
+                        p2Time.textContent = formatTime(player2Result);
+                    }
+                    if (player1Result !== null && player2Result !== null) {
+                        determineWinner();
+                    }
+                }
+            }
+            
+            if (savedEvents) {
+                events = JSON.parse(savedEvents);
+                renderEvents();
+            }
+            
+            updateDisplay();
+        });
+
+        // Initial display
+        updateDisplay();
+    
+        // Camera functionality
+        async function startCamera() {
+            try {
+                // Stop any existing stream
+                if (cameraStream) {
+                    cameraStream.getTracks().forEach(track => track.stop());
+                }
+
+                // Request camera access
+                cameraStream = await navigator.mediaDevices.getUserMedia({
+                    video: { 
+                        facingMode: facingMode,
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    },
+                    audio: false
+                });
+
+                cameraVideo.srcObject = cameraStream;
+                cameraContainer.classList.add('active');
+                cameraToggleBtn.classList.add('active');
+                cameraActive = true;
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+                alert('Unable to access camera. Please ensure camera permissions are granted.');
+            }
+        }
+
+        function stopCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+            cameraVideo.srcObject = null;
+            cameraContainer.classList.remove('active');
+            cameraToggleBtn.classList.remove('active');
+            cameraActive = false;
+        }
+
+        function setCameraPosition(position) {
+            cameraContainer.style.top = 'auto';
+            cameraContainer.style.bottom = 'auto';
+            cameraContainer.style.left = 'auto';
+            cameraContainer.style.right = 'auto';
+
+            switch(position) {
+                case 'top-left':
+                    cameraContainer.style.top = '60px';
+                    cameraContainer.style.left = '10px';
+                    break;
+                case 'top-right':
+                    cameraContainer.style.top = '60px';
+                    cameraContainer.style.right = '10px';
+                    break;
+                case 'bottom-left':
+                    cameraContainer.style.bottom = '180px';
+                    cameraContainer.style.left = '10px';
+                    break;
+                case 'bottom-right':
+                default:
+                    cameraContainer.style.bottom = '180px';
+                    cameraContainer.style.right = '10px';
+                    break;
+            }
+        }
+
+        // Camera toggle button - long press to show position options
+        let pressTimer;
+        let longPressTriggered = false;
+
+        cameraToggleBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            longPressTriggered = false;
+            pressTimer = setTimeout(() => {
+                longPressTriggered = true;
+                cameraPositionOptions.classList.add('show');
+                positionMenuTimeout = setTimeout(() => {
+                    cameraPositionOptions.classList.remove('show');
+                }, 3000);
+            }, 500);
+        });
+
+        cameraToggleBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            clearTimeout(pressTimer);
+            
+            if (!longPressTriggered) {
+                // Short tap - toggle camera
+                if (cameraActive) {
+                    stopCamera();
+                } else {
+                    startCamera();
+                }
+            }
+            longPressTriggered = false;
+        });
+
+        cameraToggleBtn.addEventListener('mousedown', (e) => {
+            longPressTriggered = false;
+            pressTimer = setTimeout(() => {
+                longPressTriggered = true;
+                cameraPositionOptions.classList.add('show');
+                positionMenuTimeout = setTimeout(() => {
+                    cameraPositionOptions.classList.remove('show');
+                }, 3000);
+            }, 500);
+        });
+
+        cameraToggleBtn.addEventListener('mouseup', (e) => {
+            clearTimeout(pressTimer);
+            
+            if (!longPressTriggered) {
+                // Short click - toggle camera
+                if (cameraActive) {
+                    stopCamera();
+                } else {
+                    startCamera();
+                }
+            }
+            longPressTriggered = false;
+        });
+
+        closeCameraBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stopCamera();
+        });
+
+        flipCameraBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            facingMode = facingMode === 'user' ? 'environment' : 'user';
+            if (cameraActive) {
+                await startCamera();
+            }
+        });
+
+        // Position selection buttons
+        document.querySelectorAll('.position-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setCameraPosition(btn.dataset.position);
+                cameraPositionOptions.classList.remove('show');
+                clearTimeout(positionMenuTimeout);
+            });
+        });
+
+        // Hide position menu when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!cameraPositionOptions.contains(e.target) && e.target !== cameraToggleBtn) {
+                cameraPositionOptions.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
