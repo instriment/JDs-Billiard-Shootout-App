@@ -128,6 +128,65 @@
             transform: scale(0.95);
         }
 
+        /* Timer overlay on camera section - top center */
+        .timer-overlay {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 12px;
+            border: 2px solid #f39c12;
+            z-index: 10;
+        }
+
+        .timer-display {
+            font-size: 2.5em;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #f39c12;
+        }
+
+        /* Stats overlay on camera section - bottom */
+        .stats-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 70%, transparent 100%);
+            backdrop-filter: blur(3px);
+            padding: 8px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.6);
+            padding: 6px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.7em;
+            color: #bdc3c7;
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-size: 1em;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
         /* SECTION 2: Controls - Middle Third */
         .controls-section {
             height: 33.33vh;
@@ -256,15 +315,6 @@
             margin-top: 2px;
         }
 
-        .timer-display {
-            font-size: 2.2em;
-            text-align: center;
-            font-weight: bold;
-            margin: 4px 0;
-            font-family: 'Courier New', monospace;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-        }
-
         .timer-controls {
             display: flex;
             gap: 4px;
@@ -301,32 +351,6 @@
             background: #95a5a6;
             color: white;
             flex: 1;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4px;
-            margin: 4px 0;
-        }
-
-        .stat-box {
-            background: rgba(0,0,0,0.4);
-            padding: 4px;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .stat-label {
-            font-size: 0.6em;
-            color: #bdc3c7;
-            margin-bottom: 2px;
-        }
-
-        .stat-value {
-            font-size: 0.95em;
-            font-weight: bold;
-            color: #f39c12;
         }
 
         .adjustments {
@@ -588,6 +612,27 @@
             <video id="cameraVideo" autoplay playsinline muted style="display: none;"></video>
             <div class="camera-placeholder" id="cameraPlaceholder">📹</div>
             
+            <!-- Timer Overlay - Top Center -->
+            <div class="timer-overlay">
+                <div class="timer-display" id="timerDisplay">00:00.00</div>
+            </div>
+
+            <!-- Stats Overlay - Bottom -->
+            <div class="stats-overlay">
+                <div class="stat-box">
+                    <div class="stat-label">Raw Time</div>
+                    <div class="stat-value" id="rawTime">00:00.00</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Adjustments</div>
+                    <div class="stat-value" id="adjustments">+0.0s</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Final Time</div>
+                    <div class="stat-value" id="finalTime">00:00.00</div>
+                </div>
+            </div>
+            
             <div class="camera-controls-overlay" id="cameraControlsOverlay" style="display: none;">
                 <button class="camera-control-btn" id="flipCameraBtn" title="Flip Camera">🔄</button>
                 <button class="camera-control-btn" id="closeCameraBtn" title="Close">✕</button>
@@ -624,27 +669,10 @@
             </div>
             <div class="match-winner" id="matchWinner" style="display: none;"></div>
             
-            <div class="timer-display" id="timerDisplay">00:00.00</div>
-            
             <div class="timer-controls">
                 <button class="btn-start" id="startBtn">Start</button>
                 <button class="btn-stop" id="stopBtn">Stop</button>
                 <button class="btn-reset" id="resetBtn">Reset</button>
-            </div>
-
-            <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-label">Raw</div>
-                    <div class="stat-value" id="rawTime">00:00.00</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Adj</div>
-                    <div class="stat-value" id="adjustments">+0.0s</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Final</div>
-                    <div class="stat-value" id="finalTime">00:00.00</div>
-                </div>
             </div>
 
             <div class="adjustments">
