@@ -392,14 +392,14 @@
         .btn-start {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            flex: 2;
+            flex: 3;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         .btn-stop {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             color: white;
-            flex: 2;
+            flex: 3;
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
@@ -760,8 +760,7 @@
             <div class="match-winner" id="matchWinner" style="display: none;"></div>
             
             <div class="timer-controls">
-                <button class="btn-start" id="startBtn">Start</button>
-                <button class="btn-stop" id="stopBtn">Stop</button>
+                <button class="btn-start" id="startStopBtn">Start</button>
                 <button class="btn-reset" id="resetBtn">Reset</button>
             </div>
 
@@ -953,8 +952,7 @@
         const adjustmentsDisplay = document.getElementById('adjustments');
         const finalTimeDisplay = document.getElementById('finalTime');
         const eventsLog = document.getElementById('eventsLog');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
+        const startStopBtn = document.getElementById('startStopBtn');
         const resetBtn = document.getElementById('resetBtn');
         const clearEventsBtn = document.getElementById('clearEventsBtn');
         const rulesBtn = document.getElementById('rulesBtn');
@@ -1115,22 +1113,25 @@
             }
         });
 
-        // Timer Controls
-        startBtn.addEventListener('click', () => {
+        // Timer Controls - Combined Start/Stop button
+        startStopBtn.addEventListener('click', () => {
             if (!isRunning) {
+                // Start the timer
                 startTime = Date.now();
                 isRunning = true;
                 timerInterval = setInterval(updateDisplay, 10);
-                startBtn.textContent = 'Resume';
+                startStopBtn.textContent = 'Stop';
+                startStopBtn.classList.remove('btn-start');
+                startStopBtn.classList.add('btn-stop');
                 addEvent('Timer Started', 0, true);
-            }
-        });
-
-        stopBtn.addEventListener('click', () => {
-            if (isRunning) {
+            } else {
+                // Stop the timer
                 isRunning = false;
                 elapsedTime += Date.now() - startTime;
                 clearInterval(timerInterval);
+                startStopBtn.textContent = 'Start';
+                startStopBtn.classList.remove('btn-stop');
+                startStopBtn.classList.add('btn-start');
                 addEvent('Timer Stopped', 0, true);
                 
                 const hasMissedShot = events.some(event => event.text === 'Missed Shot');
@@ -1179,6 +1180,11 @@
             totalAdjustments = 0;
             events = [];
             
+            // Reset button appearance
+            startStopBtn.textContent = 'Start';
+            startStopBtn.classList.remove('btn-stop');
+            startStopBtn.classList.add('btn-start');
+            
             if (vsMode) {
                 player1Result = null;
                 player2Result = null;
@@ -1192,7 +1198,6 @@
             
             localStorage.removeItem('billiardShootoutEvents');
             localStorage.removeItem('billiardShootoutState');
-            startBtn.textContent = 'Start';
             updateDisplay();
             addEvent('Timer Reset', 0, true);
         });
@@ -1333,7 +1338,9 @@
             elapsedTime = 0;
             totalAdjustments = 0;
             events = [];
-            startBtn.textContent = 'Start';
+            startStopBtn.textContent = 'Start';
+            startStopBtn.classList.remove('btn-stop');
+            startStopBtn.classList.add('btn-start');
             updateDisplay();
             renderEvents();
         }
